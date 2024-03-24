@@ -1,0 +1,104 @@
+body {
+    background-color: #1a1a1a;
+    /* Черный фон */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#game-container {
+    display: grid;
+    grid-template-columns: repeat(10, 50px);
+    gap: 5px;
+    background-color: #000;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    /* Легкое белое размытие для эффекта матовости */
+    overflow: hidden;
+    position: relative;
+}
+
+.game-item {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    background-size: cover;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+    position: relative;
+    background-color: #2f2f2f;
+    /* Тёмно-серый цвет для элементов */
+}
+
+.game-item.selected {
+    transform: scale(1.1);
+}
+
+#score {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    text-align: center;
+    color: #ff7eb9;
+    /* Розовый цвет для счёта */
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.selected {
+    animation: pulse 0.5s infinite alternate;
+}
+
+@keyframes vanish {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+.game-item.removed {
+    animation: vanish 0.3s forwards;
+    z-index: 1;
+}
+
+.combo-animation {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(255, 174, 203, 0), rgba(255, 174, 203, 0.5));
+    /* Розовый градиентный фон для анимации комбинаций */
+    animation: combo-anim 0.5s forwards;
+}
+
+@keyframes combo-anim {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}

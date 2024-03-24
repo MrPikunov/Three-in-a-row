@@ -1,0 +1,50 @@
+#game-container {
+    display: grid;
+    grid-template-columns: repeat(10, 60px);
+    gap: 5px;
+    justify-content: center;
+}
+
+.game-item {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    background-size: cover;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.game-item.selected {
+    transform: scale(1.1);
+}
+
+#score {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.selected {
+    animation: blink 1s infinite;
+}
+
+.game-item.fade-out {
+    animation: fadeOut 0.5s forwards;
+    /* Анимация исчезновения */
+}
